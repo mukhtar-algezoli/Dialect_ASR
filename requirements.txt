@@ -10,7 +10,7 @@ pandas
 wandb
 scipy
 soundfile
-python-dotenv>=0.5.1
-# datasets
+python-dotenv
+datasets
 evaluate
 jiwer
