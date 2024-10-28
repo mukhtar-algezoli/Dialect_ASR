@@ -12,5 +12,5 @@ scipy
 soundfile
 python-dotenv
 # datasets
-evaluate
-jiwer
+# evaluate
+# jiwer
