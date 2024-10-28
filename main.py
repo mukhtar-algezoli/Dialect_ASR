@@ -74,7 +74,7 @@ def main():
     os.environ["WANDB_PROJECT"]="dialects_ASR"
 
     logging.info("checking available device...")
-    if device == 'cuda':
+    if args.device == 'cuda':
         device = torch.device("cuda")
     else:
         device = torch.device("cpu")
