@@ -1,0 +1,16 @@
+# local package
+-e .
+
+# external requirements
+torch
+transformers
+tqdm
+numpy
+pandas
+wandb
+scipy
+soundfile
+python-dotenv>=0.5.1
+datasets[audio]
+evaluate
+jiwer
