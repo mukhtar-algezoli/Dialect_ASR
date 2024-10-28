@@ -39,10 +39,10 @@ def main():
     parser.add_argument('--warmup_steps', type=int, default=500,
                         help='lwarmup steps')
 
-    parser.add_argument('--model_path', type=str, default="facebook/hubert-base-ls960", 
-                        help='Huggingface model path')
+    parser.add_argument('--model_path', type=str, default="openai/whisper-large-v3", 
+                        help='Whisper model')
     
-    parser.add_argument('--data_path', type=str, default="data/raw" ,help='path to the audio files')
+    parser.add_argument('--data_path', type=str, default="mozilla-foundation/common_voice_17_0" ,help='path to the dataset in Huggingface')
     
     parser.add_argument('--output_path', type=str, default="./models/whisper-V3-finetuned" ,help='path to the output dir')
 
