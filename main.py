@@ -8,6 +8,7 @@ from dotenv import load_dotenv
 import wandb
 import huggingface_hub
 import os 
+import logging
 
 
 load_dotenv()
@@ -67,23 +68,23 @@ def main():
 
     torch.manual_seed(args.seed)
 
-    print("logging to HG and wandb...")
+    logging.info("logging to HG and wandb...")
     huggingface_hub.login(token=HG_API_KEY)
     wandb.login(key=WANDB_API_KEY)
     os.environ["WANDB_PROJECT"]="dialects_ASR"
 
-    print("checking available device...")
+    logging.info("checking available device...")
     if device == 'cuda':
         device = torch.device("cuda")
     else:
         device = torch.device("cpu")
 
-    print(f"device: {device}\n device count: {torch.cuda.device_count()}")
+    logging.info(f"device: {device}\n device count: {torch.cuda.device_count()}")
 
-    print("load the model...")
+    logging.info("load the model...")
     feature_extractor, tokenizer, processor, model = load_whisper(path=args.model_path)
 
-    print("prepare dataset...")
+    logging.info("prepare dataset...")
     data = get_dataset(path=args.data_path)
     data_collator = DataCollatorSpeechSeq2SeqWithPadding(
             processor=processor,
@@ -91,7 +92,7 @@ def main():
         )
 
 
-    print("define training...")    
+    logging.info("define training...")    
     training_args = get_train_args(args)
     trainer = get_trainer(training_args, 
                           model, 
@@ -101,10 +102,10 @@ def main():
                           compute_metrics, 
                           processor)
     
-    print("start training...")
+    logging.info("start training...")
     trainer.train()
 
-    print("save model...")
+    logging.info("save model...")
     if args.push_to_hub:
         kwargs = {
             "dataset_tags": args.data_path,
