@@ -6,7 +6,7 @@
 #SBATCH --mail-user=<youremail@gmail.com>
 #SBATCH --mail-type=ALL
 
-cd ~/$projects/your-project
+cd ~/projects/def-mageed/mukh/Dialect_ASR
 module purge
 module load python/3.7.9 scipy-stack
 source ~/py37/bin/activate
