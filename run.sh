@@ -12,4 +12,4 @@ module load python/3.7.9 scipy-stack
 pip install -r requirements.txt
 source ~/py37/bin/activate
 
-python main.py --device cpu
+python main.py 
