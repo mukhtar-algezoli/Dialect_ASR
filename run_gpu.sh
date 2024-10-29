@@ -15,4 +15,4 @@ module load python/3.7.9 scipy-stack
 pip install -r requirements.txt
 source ~/py37/bin/activate
 
-python main.py 
+python main.py --data_path "UBC-NLP/masc_cv15_asc_fleurs_mgb5"
