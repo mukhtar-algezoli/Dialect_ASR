@@ -3,7 +3,8 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=8
 #SBATCH --time=15:0:0    
-#SBATCH --mail-user=<youremail@gmail.com>
+#SBATCH --gres=gpu:a100:1
+#SBATCH --mail-user=<mukhtaralgezoli@gmail.com>
 #SBATCH --mail-type=ALL
 
 cd ~/projects/def-mageed/mukh/Dialect_ASR
