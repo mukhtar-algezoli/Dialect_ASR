@@ -74,12 +74,13 @@ def main():
     os.environ["WANDB_PROJECT"]="dialects_ASR"
 
     logging.info("checking available device...")
-    if args.device == 'cuda':
+    if torch.cuda.is_available():
         device = torch.device("cuda")
+        logging.info(f"device: {device}\n device count: {torch.cuda.device_count()}")
     else:
         device = torch.device("cpu")
+        logging.info(f"device: cpu")
 
-    logging.info(f"device: {device}\n device count: {torch.cuda.device_count()}")
 
     logging.info("load the model...")
     feature_extractor, tokenizer, processor, model = load_whisper(path=args.model_path)
