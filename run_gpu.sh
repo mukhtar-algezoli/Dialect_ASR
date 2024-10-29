@@ -4,7 +4,7 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=8    # There are 24 CPU cores on P100 Cedar GPU nodes
 #SBATCH --account=def-mageed
-#SBATCH --mem=0               # Request the full memory of the node
+#SBATCH --mem=32G              # Request the full memory of the node
 
 cd ~/projects/def-mageed/mukh/Dialect_ASR
 module purge
