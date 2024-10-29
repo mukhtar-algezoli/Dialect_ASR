@@ -3,7 +3,7 @@
 #SBATCH --gpus-per-node=p100:1
 #SBATCH --ntasks-per-node=24
 #SBATCH --mem=125G
-#SBATCH --time=3:00
+#SBATCH --time=15:0:0  
 #SBATCH --account=def-mageed
 #SBATCH --mail-user=<mukhtaralgezoli@gmail.com>
 #SBATCH --mail-type=ALL
