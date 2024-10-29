@@ -5,8 +5,8 @@ from datasets import load_dataset, DatasetDict
 from typing import Any, Dict, List, Union
 
 
-def get_dataset(path: str, name: str = "ar", split: str = "train"):
-    data = load_dataset(path=path, name=name, split=split)
+def get_dataset(path: str):
+    data = load_dataset(path=path)
     data = data.map(prepare_dataset, remove_columns=data.column_names["train"], num_proc=1)
     return data
     
@@ -19,7 +19,7 @@ def prepare_dataset(batch, feature_extractor, tokenizer):
     batch["input_features"] = feature_extractor(audio["array"], sampling_rate=audio["sampling_rate"]).input_features[0]
 
     # encode target text to label ids
-    batch["labels"] = tokenizer(batch["sentence"]).input_ids
+    batch["labels"] = tokenizer(batch["text"]).input_ids
     return batch
 
 @dataclass

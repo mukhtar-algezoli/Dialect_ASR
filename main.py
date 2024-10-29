@@ -31,20 +31,18 @@ def main():
     parser.add_argument('--per_device_train_batch_size', type=int, default=8, metavar='N',
                         help='input batch size for training (default: 8)')
     
-    parser.add_argument('--epochs', type=int, default=80, metavar='N',
+    parser.add_argument('--epochs', type=int, default=3, metavar='N',
                         help='number of epochs to train (default: 14)')
     
-    parser.add_argument('--lr', type=float, default=1e-3, metavar='LR',
+    parser.add_argument('--lr', type=float, default=1e-5, metavar='LR',
                         help='learning rate (default: 1e-3)')
     parser.add_argument('--warmup_steps', type=int, default=500,
                         help='lwarmup steps')
 
-    # parser.add_argument('--model_path', type=str, default="openai/whisper-large-v3", 
-    #                     help='Whisper model')
-    parser.add_argument('--model_path', type=str, default="openai/whisper-small", 
+    parser.add_argument('--model_path', type=str, default="openai/whisper-large-v3", 
                         help='Whisper model')
     
-    parser.add_argument('--data_path', type=str, default="mozilla-foundation/common_voice_17_0" ,help='path to the dataset in Huggingface')
+    parser.add_argument('--data_path', type=str, default="UBC-NLP/masc_cv15_asc_fleurs_mgb5_mgb2_qasr_100K" ,help='path to the dataset in Huggingface')
     
     parser.add_argument('--output_path', type=str, default="./models/whisper-V3-finetuned" ,help='path to the output dir')
 
@@ -55,10 +53,6 @@ def main():
     parser.add_argument('--wandb_run_name', type=str, default="Test Run",  help='current wandb run name')
 
     parser.add_argument('--EXP_name', type=str , default="Test Run", help='the name of the experiment examples: EXP1, EXP2, ...')
-
-
-    parser.add_argument('--device', type=str , default="cpu", help='the name of the experiment examples: EXP1, EXP2, ...')
-
 
     parser.add_argument('--seed', type=int, default=101, metavar='S',
                         help='random seed (default: 101)')
@@ -99,8 +93,8 @@ def main():
     training_args = get_train_args(args)
     trainer = get_trainer(training_args, 
                           model, 
-                          data, 
-                          data, 
+                          data["train"], 
+                          data["validation"], 
                           data_collator, 
                           compute_metrics, 
                           processor)
