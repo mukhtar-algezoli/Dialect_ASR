@@ -39,7 +39,9 @@ def main():
     parser.add_argument('--warmup_steps', type=int, default=500,
                         help='lwarmup steps')
 
-    parser.add_argument('--model_path', type=str, default="openai/whisper-large-v3", 
+    # parser.add_argument('--model_path', type=str, default="openai/whisper-large-v3", 
+    #                     help='Whisper model')
+    parser.add_argument('--model_path', type=str, default="openai/whisper-small", 
                         help='Whisper model')
     
     parser.add_argument('--data_path', type=str, default="mozilla-foundation/common_voice_17_0" ,help='path to the dataset in Huggingface')
