@@ -5,9 +5,9 @@ from datasets import load_dataset, DatasetDict
 from typing import Any, Dict, List, Union
 
 
-def get_dataset(path: str):
+def get_dataset(path: str, feature_extractor, tokenizer):
     data = load_dataset(path=path)
-    data = data.map(prepare_dataset, remove_columns=data.column_names["train"], num_proc=1)
+    data = data.map(prepare_dataset, remove_columns=data.column_names["train"], fn_kwargs={"feature_extractor": feature_extractor, "tokenizer": tokenizer}, num_proc=1)
     return data
     
 

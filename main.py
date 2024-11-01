@@ -82,7 +82,7 @@ def main():
     feature_extractor, tokenizer, processor, model = load_whisper(path=args.model_path)
 
     logging.info("prepare dataset...")
-    data = get_dataset(path=args.data_path)
+    data = get_dataset(path=args.data_path, feature_extractor=feature_extractor, tokenizer=tokenizer)
     data_collator = DataCollatorSpeechSeq2SeqWithPadding(
             processor=processor,
             decoder_start_token_id=model.config.decoder_start_token_id,
